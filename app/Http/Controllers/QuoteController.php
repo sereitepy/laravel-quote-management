@@ -14,7 +14,14 @@ class QuoteController extends Controller
             $response = Http::get('https://api.quotable.io/random');
             return response()->json($response->json());
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Could not catch any quotes!'], 500);
+            return response()->json(
+                [
+                    'error' => 'Could not catch any quotes!',
+                    'message' => $e->getMessage(),
+                    'trace' => $e->getTraceAsString()
+                ],
+                500
+            );
         }
     }
 
