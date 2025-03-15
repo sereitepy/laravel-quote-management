@@ -57,7 +57,7 @@ Allows users to fetch random quotes from an external API, save their favorites, 
 ### API Endpoints
 
 #### Authentication
-- **Register**: `POST http://127.0.0.1:8000/api/register`
+### **Register**: `POST http://127.0.0.1:8000/api/register`
   ```json
   {
     "name": "animalLover",
@@ -84,7 +84,7 @@ Allows users to fetch random quotes from an external API, save their favorites, 
 <img width="1280" alt="Screenshot 2025-03-15 at 1 33 18 in the afternoon" src="https://github.com/user-attachments/assets/a37986a3-4931-41c6-b79e-fa2879ced4a6" />
 
 ---
-- **Login**: `POST http://127.0.0.1:8000/api/login`
+### **Login**: `POST http://127.0.0.1:8000/api/login`
   ```json
   {
     "email": "ani@gmail.com",
@@ -96,12 +96,12 @@ Allows users to fetch random quotes from an external API, save their favorites, 
 
 ---
 #### Quotes (Authenticated Routes)
-- **Get Random Quotes**: `GET http://127.0.0.1:8000/api/quotes/random`
+### **Get Random Quotes**: `GET http://127.0.0.1:8000/api/quotes/random`
   - Note: This request takes around 5 seconds as it fetches 10 quotes
 <img width="1137" alt="Screenshot 2025-03-15 at 1 38 30 in the afternoon" src="https://github.com/user-attachments/assets/dda0e7aa-fe2c-4f91-87f8-b19bef758646" />
 
 ---
-- **Save a Quote**: `POST http://127.0.0.1:8000/api/quotes`
+### **Save a Quote**: `POST http://127.0.0.1:8000/api/quotes`
   ```json
   {
       "content": "We think too much and feel too little.",
@@ -114,11 +114,11 @@ Allows users to fetch random quotes from an external API, save their favorites, 
 <img width="1236" alt="Screenshot 2025-03-15 at 1 41 13 in the afternoon" src="https://github.com/user-attachments/assets/5adff872-b599-4acc-8876-2eee86461f19" />
 
 ---
-- **Get Saved Quotes**: `GET http://127.0.0.1:8000/api/quotes`
+### **Get Saved Quotes**: `GET http://127.0.0.1:8000/api/quotes`
 <img width="858" alt="Screenshot 2025-03-15 at 1 41 59 in the afternoon" src="https://github.com/user-attachments/assets/a737107b-b20c-4025-b13d-d4c00f1595cb" />
 
 ---
-- **Delete a Quote**: `DELETE http://127.0.0.1:8000/api/quotes/{id}`
+### **Delete a Quote**: `DELETE http://127.0.0.1:8000/api/quotes/{id}`
 - The saved quote id is: 3
 <img width="849" alt="Screenshot 2025-03-15 at 1 43 09 in the afternoon" src="https://github.com/user-attachments/assets/46e9f628-c200-465e-9e5d-d0866a842f5a" />
 
