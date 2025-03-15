@@ -11,14 +11,33 @@ class QuoteController extends Controller
     public function getRandom()
     {
         try {
-            $response = Http::get('https://api.quotable.io/random');
-            return response()->json($response->json());
+            $quotes = [];
+            for ($i = 0; $i < 10; $i++) {
+                $response = Http::get('https://zenquotes.io/api/random');
+
+                if ($response->successful()) {
+
+                    $quote = $response->json()[0];
+
+                    $quotes[] = [
+                        'content' => $quote['q'],
+                        'author' => $quote['a']
+                    ];
+                }
+
+            }
+
+            // if can't get any quotes, show this
+            if (empty($quotes)) {
+                throw new \Exception("Could not retrieve quotes from API");
+            }
+
+            return response()->json($quotes);
         } catch (\Exception $e) {
             return response()->json(
                 [
-                    'error' => 'Could not catch any quotes!',
-                    'message' => $e->getMessage(),
-                    'trace' => $e->getTraceAsString()
+                    'error' => 'Could not fetch quotes!',
+                    'message' => $e->getMessage()
                 ],
                 500
             );
@@ -26,7 +45,6 @@ class QuoteController extends Controller
     }
 
     // store the random quotes
-
     public function store(Request $request)
     {
         $request->validate([
@@ -43,7 +61,6 @@ class QuoteController extends Controller
     }
 
     // return quotes to authenticated user
-
     public function index(Request $request)
     {
         $quotes = $request->user()->quotes()->get();
@@ -54,7 +71,6 @@ class QuoteController extends Controller
     public function destroy(Request $request, $id)
     {
         $quote = $request->user()->quotes()->find($id);
-
         if (!$quote) {
             return response()->json(['error' => 'Quote not found'], 404);
         }
